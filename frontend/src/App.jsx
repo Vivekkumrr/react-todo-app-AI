@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import NotesList from './components/NotesList';
+import NoteModal from './components/NoteModal';
 
 function App() {
   const [notes, setNotes] = useState(() => {
@@ -12,6 +14,8 @@ function App() {
   const [content, setContent] = useState('');
   const [filter, setFilter] = useState('all'); // 'all' | 'active' | 'completed'
   const [search, setSearch] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
+  const [activeNote, setActiveNote] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('notes-todo', JSON.stringify(notes));
@@ -45,6 +49,21 @@ function App() {
 
   const handleDeleteNote = (id) => {
     setNotes(notes.filter((note) => note.id !== id));
+  };
+
+  const openNote = (note) => {
+    setActiveNote(note);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setActiveNote(null);
+  };
+
+  const handleSaveFromModal = (updated) => {
+    setNotes(notes.map((n) => (n.id === updated.id ? { ...n, ...updated } : n)));
+    closeModal();
   };
 
   const filteredNotes = notes
@@ -156,43 +175,26 @@ function App() {
                   <p>No notes found. Click "Create Note" to add one!</p>
                 </div>
               ) : (
-                filteredNotes.map((note) => (
-                  <div
-                    key={note.id}
-                    className={`note-card ${note.completed ? 'completed' : ''}`}
-                  >
-                    <div className="note-card-header">
-                      <h3 className="note-card-title">{note.title}</h3>
-                      <button
-                        className="delete-btn"
-                        onClick={() => handleDeleteNote(note.id)}
-                        title="Delete Note"
-                        aria-label="Delete Note"
-                      >
-                        &times;
-                      </button>
-                    </div>
-                    <p className="note-card-content">{note.content}</p>
-                    <div className="note-card-footer">
-                      <span className="note-date">{note.createdAt}</span>
-                      <label className="todo-checkbox-container">
-                        <input
-                          type="checkbox"
-                          checked={note.completed}
-                          onChange={() => handleToggleComplete(note.id)}
-                        />
-                        <span className="checkbox-label">
-                          {note.completed ? 'Completed' : 'Mark Complete'}
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                ))
+                <NotesList
+                  notes={notes}
+                  onOpen={openNote}
+                  onDelete={handleDeleteNote}
+                  onToggle={handleToggleComplete}
+                  search={search}
+                  filter={filter}
+                />
               )}
             </div>
           </section>
         )}
       </main>
+      <NoteModal
+        key={`${activeNote?.id ?? 'closed'}-${modalOpen}`}
+        open={modalOpen}
+        note={activeNote}
+        onClose={closeModal}
+        onSave={handleSaveFromModal}
+      />
     </div>
   );
 }
