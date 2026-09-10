@@ -7,7 +7,9 @@ A simple guide to the tech stack and coding practices used in this project.
 - **Vite**: Used as the build tool and development server for fast builds.
 - **Vanilla CSS**: Standard CSS used for dark theme styles, responsive layout, and transitions.
 
-## Conventions & Rules
-- **State Management**: Uses React's `useState` for UI changes and `useEffect` to save notes to the browser's `localStorage`.
-- **Navigation (Multi-Page)**: Uses simple state-based routing (`currentView` state) to toggle between pages (Notes list vs. Note creator) instead of heavy external routing libraries.
-- **Styling**: Standard custom CSS variables defined in `:root` of `App.css` for consistent colors, shadows, and rounding values.
+## Project Rules
+- **State**: Keep notes state in React and save it for accessing all the generated notes using `localstorage`.
+- **Components**: Use separate components for the note list and editor modal rather than using 'App.jsx` component.
+- **Editing**: Make notes modal clickable for editing and saving the notes.
+- **Accessibility**: Support keyboard opening and Escape-to-close for the modal.
+- **Validation**: Trim note text and do not save empty content.
