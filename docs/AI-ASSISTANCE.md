@@ -1,15 +1,31 @@
-# Noteify Tech Stack & Conventions
+# AI Assistance in Noteify
 
-A simple guide to the tech stack and coding practices used in this project.
+This document explains how AI has assisted in building this notes application.
 
-## Tech Stack
-- **React (v19)**: For creating the user interface using reusable components.
-- **Vite**: Used as the build tool and development server for fast builds.
-- **Vanilla CSS**: Standard CSS used for dark theme styles, responsive layout, and transitions.
+---
 
-## Project Rules
-- **State**: Keep notes state in React and save it for accessing all the generated notes using `localstorage`.
-- **Components**: Use separate components for the note list and editor modal rather than using 'App.jsx` component.
-- **Editing**: Make notes modal clickable for editing and saving the notes.
-- **Accessibility**: Support keyboard opening and Escape-to-close for the modal.
-- **Validation**: Trim note text and do not save empty content.
+## 1. Initial Setup
+* Generated the starter React project using Vite.
+* AI provided the basic dark-themed design and CSS layout.
+* AI set up simple note saving feature in `App.jsx` so notes stay in the browser even after refreshing the page.
+
+---
+
+## 2. Adding the Note Edit Feature
+* Tested vague vs. precise instructions to see how the AI responds.
+* When given clear instructions, the AI built a clean popup window to open and edit notes instead of cramming edit boxes directly onto the cards.
+* Added keyboard support so users can open notes with the `Enter` key and close the popup with the `Escape` key.
+* Made sure clicking the delete button or checkbox doesn't accidentally open the edit popup.
+
+---
+
+## 3. Fixing Deployment Problems
+* Found that the project was missing a favicon icon (causing a 404 error) and created a new `favicon.svg` file directly using terminal commands.
+* AI Found that `package-lock.json` was accidentally ignored by git.
+* Created a root `.gitignore` file to keep unnecessary files out of GitHub.
+* Pointed out how to configure hosting settings (like Vercel or Netlify) so they know the app is inside the `frontend/` folder.
+
+---
+
+## 4. Documentation & Structuring
+* AI Helped organize notes on prompt comparisons and deployment steps into clear markdown documentation files.
