@@ -1,10 +1,8 @@
 # Noteify
 
-A simple and beautiful Notes & Todo task manager app built with React and styled with modern CSS.
+A simple Notes & Todo task manager application built with React and Vite.
 
 ## Getting Started
-
-Follow these simple steps to run Noteify locally on your system:
 
 ### 1. Clone the Repository
 ```bash
@@ -12,9 +10,9 @@ git clone https://github.com/Vivekkumrr/Flyrank-AI-Fluency-Week1.git
 cd Flyrank-Internship
 ```
 
-### 2. Enter the Frontend Directory
+### 2. Go to the Frontend Folder
 ```bash
-cd Flyrank-Internship/frontend
+cd frontend
 ```
 
 ### 3. Install Dependencies
@@ -27,4 +25,4 @@ npm install
 npm run dev
 ```
 
-The application will launch locally (typically at `http://localhost:5173/` or `http://localhost:5174/`). Open the link in your browser to start managing notes and tasks!
+Open `http://localhost:5173/` in your browser to run the app.
