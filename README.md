@@ -6,8 +6,8 @@ A simple Notes & Todo task manager application built with React and Vite.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Vivekkumrr/Flyrank-AI-Fluency-Week1.git
-cd Flyrank-Internship
+git clone https://github.com/Vivekkumrr/react-todo-app-AI.git
+cd react-todo-app-AI
 ```
 
 ### 2. Go to the Frontend Folder
